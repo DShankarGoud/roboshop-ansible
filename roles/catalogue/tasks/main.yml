@@ -18,7 +18,7 @@
     dest: /tmp
     remote_src: yes
 
-- name: Remove Old catalogue Content
+- name: Clean Old catalogue Content
   ansible.builtin.file:
     path: /home/roboshop/catalogue
     state: absent

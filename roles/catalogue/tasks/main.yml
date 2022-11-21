@@ -12,7 +12,7 @@
   ansible.builtin.user:
     name: roboshop
 
-- name: Download & Extract Catalogue Contnet
+- name: Download & Extract Catalogue Content
   ansible.builtin.unarchive:
     src: https://github.com/roboshop-devops-project/catalogue/archive/main.zip
     dest: /tmp

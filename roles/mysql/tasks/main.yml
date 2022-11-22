@@ -48,8 +48,10 @@
 - name: Load Schema
   mysql_db:
     login_user: root
-    login_password: Roboshop@1
+    login_password: RoboShop@1
     state: import
     name: all
     target: /tmp/mysql-main/shipping.sql
+
+
 

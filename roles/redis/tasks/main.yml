@@ -9,7 +9,7 @@
     state: installed
 
 - name: Update listen Address in Redis Config
-  ansible.builtin.replce:
+  ansible.builtin.replace:
     path: "{{item}}"
     regexp: '127.0.0.1'
     replace: '0.0.0.0'

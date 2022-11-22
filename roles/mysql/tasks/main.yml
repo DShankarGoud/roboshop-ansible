@@ -20,18 +20,18 @@
   ansible.builtin.shell: grep 'A temporary password' /var/log/mysqld.log | awk '{print $NF}'
   register: DEFAULT_PASSWORD
 
-- name: Check MySQL Working With NEW Credentials or not
+- name: Check MySQL Working with NEW Credentisls or not
   mysql_info:
     login_user: root
-    login_password: Roboshop@1
+    login_password: RoboShop@1
     filter: version
   ignore_errors: true
   register: status
 
 - name: Copy MySQL Password reset sql file
-  ansible.builtin.copy:
-    src: password-reset.sql
-    dest: /tmp/password-reset.sql
+    ansible.builtin.copy:
+      src: password-reset.sql
+      dest: /tmp/password-reset.sql
 
 - name: Reset the Password
   ansible.builtin.shell: mysql --connect-expired-password -u root -p{{DEFAULT_PASSWORD.stdout}} </tmp/password-reset.sql

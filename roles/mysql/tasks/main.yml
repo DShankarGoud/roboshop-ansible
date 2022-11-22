@@ -20,3 +20,10 @@
   ansible.builtin.shell: grep 'A temporary password' /var/log/mysqld.log | awk '{print $NF}'
   register: DEFAULT_PASSWORD
 
+- name: Check MySQL Working With NEW Credentials or not
+  mysql_info:
+    login_user: root
+    login_password: Roboshop@1
+    filter: version
+  ignore_errors: yes
+

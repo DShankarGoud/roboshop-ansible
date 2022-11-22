@@ -25,12 +25,20 @@
     login_user: root
     login_password: Roboshop@1
     filter: version
-  ignore_errors: yes
+  ignore_errors: true
+  register: status
 
 - name: Copy MySQL Password reset sql file
   ansible.builtin.copy:
     src: password-reset.sql
     dest: /tmp/password-reset.sql
+  when: status.failed | bool
+
+- name: Reset the Password
+  ansible.builtin.shell: mysql --connect-expired-password -u root -p${{DEFAULT_PASSWORD.stdout}} </tmp/root-pass.sql
+  when: status.failed | bool
+
+
 
 
 

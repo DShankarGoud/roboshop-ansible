@@ -32,12 +32,9 @@
   ansible.builtin.copy:
     src: password-reset.sql
     dest: /tmp/password-reset.sql
-  when: staus.failed | bool
 
 - name: Reset the Password
   ansible.builtin.shell: mysql --connect-expired-password -u root -p{{DEFAULT_PASSWORD.stdout}} </tmp/password-reset.sql
-  when: staus.failed | bool
-
 
 
 

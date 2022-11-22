@@ -1,0 +1,20 @@
+- name: Copy MySQL Repo File
+  ansible.builtin.copy:
+    src: mysqld.repo
+    dest: /etc/yum.repos.d/mysql.repo
+
+- name: Install MySQL Server
+  ansible.builtin.yum:
+    name: mysql-community-server
+    state: intsalled
+
+- name: Start MySQL Service
+  ansible.builtin.systemd:
+    name: mysql
+    state: started
+    enabled: yes
+
+- name: searching for a string
+  ansible.builtin.shell: grep 'A temporary password' /var/log/mysqld.log | awk '{print $NF}'
+  register: DEFAULT_PASSWORD
+

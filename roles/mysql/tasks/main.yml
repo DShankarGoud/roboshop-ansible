@@ -24,19 +24,17 @@
   ignore_errors: true
   register: status
 
-- name: Reset default password tasks
+- name: Reset Default password tasks
   when: status.failed | bool
-  blocks:
+  block:
     - name: Copy MySQL Password reset sql file
       ansible.builtin.copy:
         src: password-reset.sql
         dest: /tmp/password-reset.sql
-      when: status.failed | bool
 
     - name: Grab a Default Password
       ansible.builtin.shell: grep 'A temporary password' /var/log/mysqld.log | awk '{print $NF}'
       register: DEFAULT_PASSWORD
-
 
     - name: Reset the Password
       ansible.builtin.shell: mysql --connect-expired-password -u root -p{{DEFAULT_PASSWORD.stdout}} </tmp/password-reset.sql

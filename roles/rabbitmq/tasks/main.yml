@@ -1,5 +1,5 @@
-- name: Configure Yum Repos
-  ansible.builtin.shell: Curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | bash
+- name: Configure YUM Repos
+  ansible.builtin.shell: curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | bash
 
 - name: Install Erlang & NodeJS
   ansible.builtin.yum:

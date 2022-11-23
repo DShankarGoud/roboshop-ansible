@@ -15,7 +15,7 @@
     enabled: yes
 
 - name: Configure Application User
-  ansible.builtin.rabbitmq-server:
+  community.rabbitmq.rabbitmq-server:
     user: root
     password: roboshop123
     configure_priv: .*

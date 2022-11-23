@@ -16,7 +16,7 @@
 
 - name: Configure application user
   community.rabbitmq.rabbitmq_User:
-    user: root
+    user: roboshop
     password: roboshop123
     configure_priv: .*
     read_priv: .*

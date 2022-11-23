@@ -1,7 +1,4 @@
-- name: Setup Yum Repos
-  ansible.builtin.shell: curl -s https://rpm.nodesource.com/setup_16.x | bash
-
-- name: Install NodeJS
+- name: Install Maven
   ansible.builtin.yum:
     name:
       - nodejs
@@ -13,11 +10,13 @@
     name: common
     tasks_from: download-from-github
 
-- name: Install NodeJS Dependencies
-  community.general.npm:
-    path: /home/roboshop/{{COMPONENT}}
+- name: Compile Java code
+  ansible.builtin.shell: mvn clean package && mv target/{{COMPONENT}}-1.0.jar {{COMPONENT}}.jar
+  args:
+      chdir: /home/roboshop/{{COMPONENT}}
 
 - name: SystemD Setup
   import_role:
     name: common
     tasks_from: systemd
+

@@ -15,7 +15,7 @@
     enabled: yes
 
 - name: Configure application user
-  community.rabbitmq.rabbitmq_User:
+  community.rabbitmq.rabbitmq_user:
     user: roboshop
     password: roboshop123
     configure_priv: .*
@@ -24,4 +24,3 @@
     vhost: /
     state: present
     tags: administrator
-

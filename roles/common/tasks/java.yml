@@ -1,7 +1,6 @@
 - name: Install Maven
   ansible.builtin.yum:
     name:
-      - nodejs
       - gcc-c++
     state: installed
 

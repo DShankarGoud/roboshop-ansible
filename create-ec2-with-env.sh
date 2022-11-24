@@ -6,7 +6,7 @@ if [ -z "$1" ]; then
 fi
 
 if [ -z "$2" ]; then
-  echo "Instance Name as argument is needed"
+  echo "ENV as argument is needed"
   exit 1
 fi
 

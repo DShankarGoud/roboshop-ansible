@@ -34,7 +34,7 @@ IPADDRESS=$(aws ec2 describe-instances  --instance-ids ${INSTANCE_ID}  --output 
 
 sed -e "s/COMPONENT/${NAME}-${ENV}/" -e "s/IPADDRESS/${IPADDRESS}/" record.json >/tmp/record.json
 aws route53 change-resource-record-sets --hosted-zone-id Z00238871SPZMZR2MMZX5 --change-batch file:///tmp/record.json &>/dev/null
-echo DNS Record Create
+echo DNS Record Created
 
 touch inv
 sed -i -e "/${NAME}/, +1 d" inv

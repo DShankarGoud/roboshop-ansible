@@ -8,7 +8,6 @@
     path: /usr/share/nginx/html
     state: absent
 
-
 - name: Download & Extract Frontend Content
   ansible.builtin.unarchive:
     src: https://github.com/roboshop-devops-project/frontend/archive/main.zip

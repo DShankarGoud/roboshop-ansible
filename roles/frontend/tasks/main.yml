@@ -3,7 +3,7 @@
     name: nginx
     state: installed
 
-- name: Remove Old Content
+- name: Remove old content
   ansible.builtin.file:
     path: /usr/share/nginx/html
     state: absent
@@ -20,7 +20,7 @@
     dest: /usr/share/nginx/html/
     remote_src: yes
 
-- name: Copy Nginx Roboshop Configuration
+- name: Copy Nginx RoboShop Configuration
   ansible.builtin.template:
     src: roboshop.conf
     dest: /etc/nginx/default.d/roboshop.conf
@@ -30,5 +30,3 @@
     state: restarted
     name: nginx
     enabled: yes
-
-

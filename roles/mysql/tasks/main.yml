@@ -33,7 +33,7 @@
         dest: /tmp/password-reset.sql
 
     - name: Grab a Default Password
-      ansible.builtin.shell: grep 'A temporary password' /var/log/mysqld.log | awk '{print $NF}'
+      ansible.builtin.shell: grep 'A temporary password' /var/ec2InstanceCreate/mysqld.ec2InstanceCreate | awk '{print $NF}'
       register: DEFAULT_PASSWORD
 
     - name: Reset the Password

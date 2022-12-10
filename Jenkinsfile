@@ -21,7 +21,7 @@ pipeline {
       stage ('Create Instance') {
           steps {
             script {
-               ec2InstanceCreate.create("${COMPONENT}" "${ENV}")
+               ec2InstanceCreate.create("${COMPONENT}", "${ENV}")
             }
           }
       }
